@@ -1,1 +1,39 @@
-﻿ConnectionStrings.config
+﻿
+# Visual Studio / .NET
+.vs/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build output
+bin/
+obj/
+TestResults/
+
+# NuGet packages
+packages/
+*.nupkg
+
+# Publish output
+*.publishsettings
+PublishOutput/
+
+# Rider / Resharper
+.idea/
+_ReSharper*/
+
+# Database / local DB files (do NOT commit MDF/LDF)
+*.mdf
+*.ldf
+App_Data/*.mdf
+App_Data/*.ldf
+
+# Local connection strings file (keep your real file out of the repo)
+ConnectionStrings.config
+
+# Other local / OS files
+Thumbs.db
+desktop.ini
+*.log
