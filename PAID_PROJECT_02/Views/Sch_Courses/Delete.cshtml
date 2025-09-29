@@ -1,0 +1,57 @@
+﻿@model PAID_PROJECT_02.Models.Sch_Courses
+@{
+    ViewBag.Title = "Sch_Courses";
+}
+<h1 style="font-size:20px;font-weight:500;color:red"><i class="fa fa-warning"></i> Are you sure you want to delete?</h1>
+<div>
+    <div class="row g-3" style="display:flex">
+        <dl class="col-md-2">
+            <dt class="col-sm-3"><strong>DepartmentId</strong></dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.DepartmentId)</dd>
+
+            <dt class="col-sm-3 mt-4"><strong>CourseName</strong></dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.CourseName)</dd>
+
+            <dt class="col-sm-3 mt-4"><strong>Code</strong></dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Code)</dd>
+        </dl>
+        <dl class="col-md-2" style="margin-left:50px">
+            <dt class="col-sm-3"><strong>Credits</strong></dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Credits)</dd>
+
+            <dt class="col-sm-3 mt-4"><strong>Active</strong></dt>
+            <dd class="col-sm-9" style="color:black">@Html.DisplayFor(model => model.Active)</dd>
+
+            <dt class="col-sm-3 mt-4"><strong>Deleted</strong></dt>
+            <dd class="col-sm-9" style="color:black">@Html.DisplayFor(model => model.Deleted)</dd>
+        </dl>
+        <dl class="col-md-2" style="margin-left:50px">
+            <dt class="col-sm-3"><strong>Description</strong></dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Description)</dd>
+
+            <dt class="col-sm-3 mt-4"><strong>CreatedBy</strong></dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.CreatedBy)</dd>
+
+            <dt class="col-sm-3 mt-4"><strong>CreatedDate</strong></dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.CreatedDate)</dd>
+        </dl>
+        <dl class="col-md-2" style="margin-left:50px">
+            <dt class="col-sm-3"><strong>UpdatedBy</strong></dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.UpdatedBy)</dd>
+
+            <dt class="col-sm-3 mt-4"><strong>UpdatedDate</strong></dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.UpdatedDate)</dd>
+        </dl>
+    </div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="row g-3 mt-4">
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="px-4 py-2 rounded-lg bg-red-500 text-white font-semibold " style="cursor:pointer;transform:scale(0.9)" />
+                @Html.ActionLink("Back", "Index", null, new { @class = "px-4 py-2 rounded-lg bg-black/50 border border-white/20 text-white font-semibold" })
+            </div>
+        </div>
+    }
+</div>
+

@@ -1,0 +1,240 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title - School Management System</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+        /* Navbar Glass */
+        .nav-glass {
+            background: rgba(20, 20, 20, 0.6);
+            backdrop-filter: blur(18px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        /* Card Glass */
+        .card-glass {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(16px) saturate(200%);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .sidebar-link:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateX(4px);
+        }
+        /* Firefox support */
+        * {
+            scrollbar-color: rgba(20, 20, 20, 0.6) #555; /* thumb + track */
+        }
+
+    </style>
+</head>
+
+<body class="bg-gradient-to-br from-gray-900 via-gray-800 to-black min-h-screen flex">
+    <!-- Top Navbar -->
+    <header class="nav-glass fixed left-1/2 transform -translate-x-1/2 w-[100%] max-w-7xl flex items-center justify-between px-6 py-5 text-white shadow-lg z-50">
+        <!-- Brand -->
+        <div class="flex items-center gap-3">
+            <a href="@Url.Content("~/Dashboard/Dashboard")">
+                <img src="~/Content/Template/img/user/SchoolSphere.png"
+                     style="width:50px;height:50px;object-fit:cover;border-radius:50%;cursor:pointer;" />
+            </a>
+            <!-- Nav Links -->
+            <nav class="flex items-center gap-9" style="margin-left:27px">
+                <a href="@Url.Content("~/Dashboard/Dashboard")" class="relative nav-link after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full hover:after:left-0">
+                    <i class="fa fa-home"></i> <span>Home</span>
+                </a>
+                <a href="@Url.Content("~/Sch_Attendance/Index")"
+                   class="relative nav-link after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full hover:after:left-0">Attendance</a>
+                <a href="@Url.Content("~/Sch_Classes/Index")"
+                   class="relative nav-link after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full hover:after:left-0">Classes</a>
+                <a href="@Url.Content("~/Sch_Courses/Index")"
+                   class="relative nav-link after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full hover:after:left-0">Courses</a>
+                <a href="@Url.Content("~/Sch_Departments/Index")"
+                   class="relative nav-link after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full hover:after:left-0">Departments</a>
+                <a href="@Url.Content("~/Sch_Inventory/Index")" 
+                    class="relative nav-link after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full hover:after:left-0">Inventory</a>
+                <a href="@Url.Content("~/Sch_Students/Index")"
+                    class="relative nav-link after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full hover:after:left-0">Students</a>
+                <a href="@Url.Content("~/Sch_Textbooks/Index")"
+                    class="relative nav-link after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full hover:after:left-0">Textbooks</a>
+                @*<div class="relative group">
+                    <button class="relative nav-link after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full hover:after:left-0">
+                        <span>Dropdown 02</span>
+                        <i class="fa-solid fa-chevron-down text-sm"></i>
+                    </button>
+                    <div class="hidden group-hover:block absolute top-full mt-0 left-0 glass text-sm text-white rounded-lg shadow-lg w-48">
+                        <a href="@Url.Content("~/Sch_Inventory/Index")" class="block px-4 py-2 hover:bg-white/20">Inventory</a>
+                        <a href="@Url.Content("~/Sch_Students/Index")" class="block px-4 py-2 hover:bg-white/20">Students</a>
+                        <a href="@Url.Content("~/Sch_Textbooks/Index")" class="block px-4 py-2 hover:bg-white/20">Textbooks</a>
+                    </div>
+                </div>*@
+            </nav>
+        </div>
+    </header>
+    <!-- Sidebar -->
+    <!--<aside class="fixed inset-y-4 left-4 w-64 glass text-white flex flex-col shadow-xl transition-all duration-300">-->
+    <!-- Brand -->
+    <!--<div class="flex items-center gap-3 px-6 py-5 border-b border-white/20">
+        <i class="fa-solid fa-school text-2xl"></i>
+        <span class="font-bold text-lg">BBJAN BRANCH</span>
+    </div>-->
+    <!-- Nav -->
+    <!--<nav class="flex-1 px-4 py-6 overflow-y-auto space-y-2">
+    <a href="@Url.Content("~/DashBoard/DashBoardHome")"
+       class="sidebar-link flex items-center gap-3 px-3 py-2 rounded-lg transition-all">
+        <i class="fa-solid fa-gauge"></i> <span>Dashboard</span>
+    </a>-->
+    <!-- Dropdown -->
+    <!--<div>
+            <button onclick="toggleMenu('invMenu')"
+                    class="flex items-center justify-between w-full px-3 py-2 rounded-lg hover:bg-white/25 transition">
+                <span class="flex items-center gap-3">
+                    <i class="fa-solid fa-boxes"></i> <span>Inventory</span>
+                </span>
+                <i id="invMenuIcon" class="fa-solid fa-chevron-right text-sm transition-transform"></i>
+            </button>
+            <div id="invMenu" class="hidden ml-6 mt-2 flex-col space-y-1 text-sm">
+                <a href="@Url.Content("~/Sch_Attendance/Index")" class="hover:text-yellow-300">Sch_Attendance</a>
+                <a href="@Url.Content("~/Sch_Classes/Index")" class="hover:text-yellow-300">Sch_Classes</a>
+                <a href="@Url.Content("~/Sch_Courses/Index")" class="hover:text-yellow-300">Sch_Courses</a>
+            </div>
+        </div>
+    </nav>-->
+    <!-- Footer -->
+    <!--<footer class="p-4 border-t border-white/20 text-xs">
+        <p>&copy; @DateTime.Now.Year BBJAN BRANCH</p>
+        <p class="mt-1">Made by: Zeeshan Abbas</p>
+        <div class="flex items-center gap-1 mt-2">
+            <i class="fa-regular fa-clock"></i>
+            <span id="live-clock">@DateTime.Now.ToString("hh:mm:ss tt")</span>
+        </div>
+    </footer>-->
+    <!--</aside>-->
+    <!-- Main -->
+<main class="flex-5 ml-62 p-9 text-white mt-14">
+    <h1 class="text-4xl font-bold mb-9">@ViewBag.Title</h1>
+    <div class="card-glass p-6 rounded-xl shadow-lg">
+        @RenderBody()
+    </div>
+
+    <!-- Start Footer  -->
+    <!--<footer>
+        <div class="footer-main">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <div class="footer-widget">
+                            <h4>About ThewayShop</h4>
+                            <ul>
+                                <li><a href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fab fa-google-plus" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fab fa-pinterest-p" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fab fa-whatsapp" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <div class="footer-link">
+                            <h4>Information</h4>
+                            <ul>
+                                <li><a href="#">About Us</a></li>
+                                <li><a href="#">Customer Service</a></li>
+                                <li><a href="#">Our Sitemap</a></li>
+                                <li><a href="#">Terms &amp; Conditions</a></li>
+                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="#">Delivery Information</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <div class="footer-link-contact">
+                            <h4>Contact Us</h4>
+                            <ul>
+                                <li>
+                                    <p><i class="fas fa-map-marker-alt"></i>Address: Michael I. Days 3756 <br>Preston Street Wichita,<br> KS 67213 </p>
+                                </li>
+                                <li>
+                                    <p><i class="fas fa-phone-square"></i>Phone: <a href="tel:+1-888705770">+1-888 705 770</a></p>
+                                </li>
+                                <li>
+                                    <p><i class="fas fa-envelope"></i>Email: <a href="mailto:contactinfo@gmail.com">contactinfo@gmail.com</a></p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>-->
+    <!-- End Footer  -->
+    <!-- Start copyright  -->
+    <!--<div class="footer-copyright">
+        <p class="footer-company">
+            All Rights Reserved. &copy; 2018 <a href="#">ThewayShop</a> Design By :
+            <a href="https://html.design/">Zeeshan Abbas</a>
+        </p>
+    </div>-->
+    <!-- End copyright  -->
+    @*<footer class="p-4 border-t border-white/20 text-xs mt-14">
+        <ul class="gap-5" style="display:flex;font-size:20px;display:flex">
+            <li><a href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fab fa-google-plus" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fab fa-pinterest-p" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fab fa-whatsapp" aria-hidden="true"></i></a></li>
+        </ul>
+        
+        <p>&copy; @DateTime.Now.Year SchoolSphere</p>
+        <p style="margin-left:20px">Made by: Zeeshan Abbas</p>
+        <div class="flex items-center gap-1" style="margin-left:20px">
+            <i class="fa-regular fa-clock"></i>
+            <span id="live-clock">@DateTime.Now.ToString("hh:mm:ss tt")</span>
+        </div>
+    </footer>*@
+</main>
+
+    <!-- Modern JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.min.js"></script>
+
+    <script>
+        // Dropdown menu toggle
+        function toggleMenu(id) {
+            document.getElementById(id).classList.toggle("hidden");
+            document.getElementById(id + "Icon").classList.toggle("rotate-90");
+        }
+
+        // Live clock
+        setInterval(() => {
+            document.getElementById("live-clock").innerText = new Date().toLocaleTimeString();
+        }, 1000);
+    </script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,101 @@
+﻿@model PAID_PROJECT_02.Models.Sch_Inventory
+@{
+    ViewBag.Title = "Sch_Inventory";
+}
+<style>
+    /* Style dropdown box */
+    select {
+        background-color: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #ffffff;
+        padding: 8px 12px;
+        border-radius: 8px;
+        width: 100%;
+    }
+
+        /* Style dropdown options */
+        select option {
+            background-color: #1e293b; /* dark slate */
+            color: #ffffff;
+        }
+
+            /* Highlight on hover */
+            select option:hover {
+                background-color: #4f46e5; /* indigo */
+                color: #ffffff;
+            }
+</style>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+<div class="card-glass p-5 rounded-xl shadow-xl max-w-5xl mx-auto">
+    @Html.ValidationSummary(true, "", new { @class = "text-red-400 mb-4" })
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div>
+            @Html.LabelFor(m => m.ResourceId, new { @class = "block text-sm font-semibold text-indigo-300 mb-1" })
+            @Html.EditorFor(m => m.ResourceId, new { htmlAttributes = new { @class = "w-full p-2 rounded-lg bg-white/10 border border-white/20 text-white focus:ring-2 focus:ring-indigo-400" } })
+            @Html.ValidationMessageFor(m => m.ResourceId, "", new { @class = "text-red-400 text-sm" })
+        </div>
+
+        <div>
+            @Html.LabelFor(m => m.ResourceName, new { @class = "block text-sm font-semibold text-indigo-300 mb-1" })
+            @Html.EditorFor(m => m.ResourceName, new { htmlAttributes = new { @class = "w-full p-2 rounded-lg bg-white/10 border border-white/20 text-white focus:ring-2 focus:ring-indigo-400" } })
+            @Html.ValidationMessageFor(m => m.ResourceName, "", new { @class = "text-red-400 text-sm" })
+        </div>
+        <div class="flex items-center gap-2">
+            @Html.EditorFor(m => m.InStock, new { htmlAttributes = new { @class = "h-4 w-4 text-indigo-400 focus:ring-indigo-400 border-gray-600 rounded" } })
+            @Html.LabelFor(m => m.InStock, new { @class = "text-sm font-semibold text-indigo-300" })
+        </div>
+        <div>
+            @Html.LabelFor(m => m.Quantity, new { @class = "block text-sm font-semibold text-indigo-300 mb-1" })
+            @Html.EditorFor(m => m.Quantity, new { htmlAttributes = new { @class = "w-full p-2 rounded-lg bg-white/10 border border-white/20 text-white focus:ring-2 focus:ring-indigo-400" } })
+            @Html.ValidationMessageFor(m => m.Quantity, "", new { @class = "text-red-400 text-sm" })
+        </div>
+        <div>
+            @Html.LabelFor(m => m.Rack, new { @class = "block text-sm font-semibold text-indigo-300 mb-1" })
+            @Html.EditorFor(m => m.Rack, new { htmlAttributes = new { @class = "w-full p-2 rounded-lg bg-white/10 border border-white/20 text-white focus:ring-2 focus:ring-indigo-400" } })
+            @Html.ValidationMessageFor(m => m.Rack, "", new { @class = "text-red-400 text-sm" })
+        </div>
+        <div>
+            @Html.LabelFor(m => m.Shelf, new { @class = "block text-sm font-semibold text-indigo-300 mb-1" })
+            @Html.EditorFor(m => m.Shelf, new { htmlAttributes = new { @class = "w-full p-2 rounded-lg bg-white/10 border border-white/20 text-white focus:ring-2 focus:ring-indigo-400" } })
+            @Html.ValidationMessageFor(m => m.Shelf, "", new { @class = "text-red-400 text-sm" })
+        </div>
+        <div>
+            @Html.LabelFor(m => m.Condition, new { @class = "block text-sm font-semibold text-indigo-300 mb-1" })
+            @Html.EditorFor(m => m.Condition, new { htmlAttributes = new { @class = "w-full p-2 rounded-lg bg-white/10 border border-white/20 text-white focus:ring-2 focus:ring-indigo-400" } })
+            @Html.ValidationMessageFor(m => m.Condition, "", new { @class = "text-red-400 text-sm" })
+        </div>
+        <div class="flex items-center gap-2">
+            @Html.EditorFor(m => m.Deleted, new { htmlAttributes = new { @class = "h-4 w-4 text-indigo-400 focus:ring-indigo-400 border-gray-600 rounded" } })
+            @Html.LabelFor(m => m.Deleted, new { @class = "text-sm font-semibold text-indigo-300" })
+        </div>
+
+        <div class="flex items-center gap-2">
+            @Html.EditorFor(m => m.Active, new { htmlAttributes = new { @class = "h-4 w-4 text-indigo-400 focus:ring-indigo-400 border-gray-600 rounded" } })
+            @Html.LabelFor(m => m.Active, new { @class = "text-sm font-semibold text-indigo-300" })
+        </div>
+        <div>
+            @Html.LabelFor(m => m.CreatedDate, new { @class = "block text-sm font-semibold text-indigo-300 mb-1" })
+            @Html.EditorFor(m => m.CreatedDate, new { htmlAttributes = new { @class = "w-full p-2 rounded-lg bg-white/10 border border-white/20 text-white focus:ring-2 focus:ring-indigo-400" } })
+            @Html.ValidationMessageFor(m => m.CreatedDate, "", new { @class = "text-red-400 text-sm" })
+        </div>
+
+        <div>
+            @Html.LabelFor(m => m.UpdatedDate, new { @class = "block text-sm font-semibold text-indigo-300 mb-1" })
+            @Html.EditorFor(m => m.UpdatedDate, new { htmlAttributes = new { @class = "w-full p-2 rounded-lg bg-white/10 border border-white/20 text-white focus:ring-2 focus:ring-indigo-400" } })
+            @Html.ValidationMessageFor(m => m.UpdatedDate, "", new { @class = "text-red-400 text-sm" })
+        </div>
+    </div>
+
+    <div class="form-group mt-4">
+        <div class="col-md-offset-2 col-md-6" style="display:flex">
+            <input type="submit" value="Save" class="px-4 py-2 rounded-lg bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-semibold shadow" style="cursor:pointer" />
+            @Html.ActionLink("Back", "Index", null, new { @class = "px-4 py-2 rounded-lg bg-black/50 border border-white/20 text-white font-semibold", style = "margin-left:10px" })
+        </div>
+
+    </div>
+</div>
+}
+

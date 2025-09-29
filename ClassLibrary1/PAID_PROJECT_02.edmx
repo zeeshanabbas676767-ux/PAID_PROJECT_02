@@ -1,0 +1,615 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PAID_PROJECT_02_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Sch_Attendance">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentId" Type="int" />
+          <Property Name="ClassId" Type="int" />
+          <Property Name="AttendanceDate" Type="date" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="Deleted" Type="bit" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Sch_Classes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourseId" Type="int" />
+          <Property Name="StudentId" Type="int" />
+          <Property Name="EnrollmentDate" Type="date" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Sch_Courses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DepartmentId" Type="int" />
+          <Property Name="CourseName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Credits" Type="int" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="Deleted" Type="bit" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Sch_Departments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" />
+          <Property Name="DepartmentName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Deleted" Type="bit" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="RecordTimeStamp" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Sch_Inventory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ResourceId" Type="int" />
+          <Property Name="ResourceName" Type="nvarchar" MaxLength="50" />
+          <Property Name="InStock" Type="bit" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="Rack" Type="nvarchar" MaxLength="50" />
+          <Property Name="Shelf" Type="nvarchar" MaxLength="50" />
+          <Property Name="Condition" Type="nvarchar" MaxLength="50" />
+          <Property Name="Deleted" Type="bit" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Sch_Students">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Student_Id" Type="nvarchar" MaxLength="50" />
+          <Property Name="Student_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="City" Type="nchar" MaxLength="10" />
+          <Property Name="Country" Type="nchar" MaxLength="10" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="20" />
+          <Property Name="Enrollment_Date" Type="date" Nullable="false" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="Deleted" Type="bit" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Sch_Textbooks">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourseId" Type="int" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="ISBN" Type="nvarchar" MaxLength="50" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Deleted" Type="bit" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_Attendance_Class">
+          <End Role="Sch_Classes" Type="Self.Sch_Classes" Multiplicity="0..1" />
+          <End Role="Sch_Attendance" Type="Self.Sch_Attendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sch_Classes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sch_Attendance">
+              <PropertyRef Name="ClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Attendance_Student">
+          <End Role="Sch_Students" Type="Self.Sch_Students" Multiplicity="0..1" />
+          <End Role="Sch_Attendance" Type="Self.Sch_Attendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sch_Students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sch_Attendance">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Classes_Course">
+          <End Role="Sch_Courses" Type="Self.Sch_Courses" Multiplicity="0..1" />
+          <End Role="Sch_Classes" Type="Self.Sch_Classes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sch_Courses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sch_Classes">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Classes_Student">
+          <End Role="Sch_Students" Type="Self.Sch_Students" Multiplicity="0..1" />
+          <End Role="Sch_Classes" Type="Self.Sch_Classes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sch_Students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sch_Classes">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Courses_Department">
+          <End Role="Sch_Departments" Type="Self.Sch_Departments" Multiplicity="0..1" />
+          <End Role="Sch_Courses" Type="Self.Sch_Courses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sch_Departments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sch_Courses">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Textbooks_Course">
+          <End Role="Sch_Courses" Type="Self.Sch_Courses" Multiplicity="0..1" />
+          <End Role="Sch_Textbooks" Type="Self.Sch_Textbooks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sch_Courses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sch_Textbooks">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PAID_PROJECT_02_DBModelStoreContainer">
+          <EntitySet Name="Sch_Attendance" EntityType="Self.Sch_Attendance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sch_Classes" EntityType="Self.Sch_Classes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sch_Courses" EntityType="Self.Sch_Courses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sch_Departments" EntityType="Self.Sch_Departments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sch_Inventory" EntityType="Self.Sch_Inventory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sch_Students" EntityType="Self.Sch_Students" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sch_Textbooks" EntityType="Self.Sch_Textbooks" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Attendance_Class" Association="Self.FK_Attendance_Class">
+            <End Role="Sch_Classes" EntitySet="Sch_Classes" />
+            <End Role="Sch_Attendance" EntitySet="Sch_Attendance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Attendance_Student" Association="Self.FK_Attendance_Student">
+            <End Role="Sch_Students" EntitySet="Sch_Students" />
+            <End Role="Sch_Attendance" EntitySet="Sch_Attendance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Classes_Course" Association="Self.FK_Classes_Course">
+            <End Role="Sch_Courses" EntitySet="Sch_Courses" />
+            <End Role="Sch_Classes" EntitySet="Sch_Classes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Classes_Student" Association="Self.FK_Classes_Student">
+            <End Role="Sch_Students" EntitySet="Sch_Students" />
+            <End Role="Sch_Classes" EntitySet="Sch_Classes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Courses_Department" Association="Self.FK_Courses_Department">
+            <End Role="Sch_Departments" EntitySet="Sch_Departments" />
+            <End Role="Sch_Courses" EntitySet="Sch_Courses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Textbooks_Course" Association="Self.FK_Textbooks_Course">
+            <End Role="Sch_Courses" EntitySet="Sch_Courses" />
+            <End Role="Sch_Textbooks" EntitySet="Sch_Textbooks" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PAID_PROJECT_02_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Sch_Attendance">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentId" Type="Int32" />
+          <Property Name="ClassId" Type="Int32" />
+          <Property Name="AttendanceDate" Type="DateTime" Precision="0" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Deleted" Type="Boolean" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Sch_Classes" Relationship="Self.FK_Attendance_Class" FromRole="Sch_Attendance" ToRole="Sch_Classes" />
+          <NavigationProperty Name="Sch_Students" Relationship="Self.FK_Attendance_Student" FromRole="Sch_Attendance" ToRole="Sch_Students" />
+        </EntityType>
+        <EntityType Name="Sch_Classes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseId" Type="Int32" />
+          <Property Name="StudentId" Type="Int32" />
+          <Property Name="EnrollmentDate" Type="DateTime" Precision="0" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Sch_Attendance" Relationship="Self.FK_Attendance_Class" FromRole="Sch_Classes" ToRole="Sch_Attendance" />
+          <NavigationProperty Name="Sch_Courses" Relationship="Self.FK_Classes_Course" FromRole="Sch_Classes" ToRole="Sch_Courses" />
+          <NavigationProperty Name="Sch_Students" Relationship="Self.FK_Classes_Student" FromRole="Sch_Classes" ToRole="Sch_Students" />
+        </EntityType>
+        <EntityType Name="Sch_Courses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DepartmentId" Type="Int32" />
+          <Property Name="CourseName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Credits" Type="Int32" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="Deleted" Type="Boolean" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Sch_Classes" Relationship="Self.FK_Classes_Course" FromRole="Sch_Courses" ToRole="Sch_Classes" />
+          <NavigationProperty Name="Sch_Departments" Relationship="Self.FK_Courses_Department" FromRole="Sch_Courses" ToRole="Sch_Departments" />
+          <NavigationProperty Name="Sch_Textbooks" Relationship="Self.FK_Textbooks_Course" FromRole="Sch_Courses" ToRole="Sch_Textbooks" />
+        </EntityType>
+        <EntityType Name="Sch_Departments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DepartmentName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Deleted" Type="Boolean" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="RecordTimeStamp" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Sch_Courses" Relationship="Self.FK_Courses_Department" FromRole="Sch_Departments" ToRole="Sch_Courses" />
+        </EntityType>
+        <EntityType Name="Sch_Inventory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ResourceId" Type="Int32" />
+          <Property Name="ResourceName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InStock" Type="Boolean" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="Rack" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Shelf" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Condition" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Deleted" Type="Boolean" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Sch_Students">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Student_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Student_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Enrollment_Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="Deleted" Type="Boolean" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Sch_Attendance" Relationship="Self.FK_Attendance_Student" FromRole="Sch_Students" ToRole="Sch_Attendance" />
+          <NavigationProperty Name="Sch_Classes" Relationship="Self.FK_Classes_Student" FromRole="Sch_Students" ToRole="Sch_Classes" />
+        </EntityType>
+        <EntityType Name="Sch_Textbooks">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseId" Type="Int32" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ISBN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Deleted" Type="Boolean" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Sch_Courses" Relationship="Self.FK_Textbooks_Course" FromRole="Sch_Textbooks" ToRole="Sch_Courses" />
+        </EntityType>
+        <Association Name="FK_Attendance_Class">
+          <End Role="Sch_Classes" Type="Self.Sch_Classes" Multiplicity="0..1" />
+          <End Role="Sch_Attendance" Type="Self.Sch_Attendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sch_Classes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sch_Attendance">
+              <PropertyRef Name="ClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Attendance_Student">
+          <End Role="Sch_Students" Type="Self.Sch_Students" Multiplicity="0..1" />
+          <End Role="Sch_Attendance" Type="Self.Sch_Attendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sch_Students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sch_Attendance">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Classes_Course">
+          <End Role="Sch_Courses" Type="Self.Sch_Courses" Multiplicity="0..1" />
+          <End Role="Sch_Classes" Type="Self.Sch_Classes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sch_Courses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sch_Classes">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Classes_Student">
+          <End Role="Sch_Students" Type="Self.Sch_Students" Multiplicity="0..1" />
+          <End Role="Sch_Classes" Type="Self.Sch_Classes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sch_Students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sch_Classes">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Courses_Department">
+          <End Role="Sch_Departments" Type="Self.Sch_Departments" Multiplicity="0..1" />
+          <End Role="Sch_Courses" Type="Self.Sch_Courses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sch_Departments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sch_Courses">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Textbooks_Course">
+          <End Role="Sch_Courses" Type="Self.Sch_Courses" Multiplicity="0..1" />
+          <End Role="Sch_Textbooks" Type="Self.Sch_Textbooks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sch_Courses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sch_Textbooks">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PAID_PROJECT_02_DBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Sch_Attendance" EntityType="Self.Sch_Attendance" />
+          <EntitySet Name="Sch_Classes" EntityType="Self.Sch_Classes" />
+          <EntitySet Name="Sch_Courses" EntityType="Self.Sch_Courses" />
+          <EntitySet Name="Sch_Departments" EntityType="Self.Sch_Departments" />
+          <EntitySet Name="Sch_Inventory" EntityType="Self.Sch_Inventory" />
+          <EntitySet Name="Sch_Students" EntityType="Self.Sch_Students" />
+          <EntitySet Name="Sch_Textbooks" EntityType="Self.Sch_Textbooks" />
+          <AssociationSet Name="FK_Attendance_Class" Association="Self.FK_Attendance_Class">
+            <End Role="Sch_Classes" EntitySet="Sch_Classes" />
+            <End Role="Sch_Attendance" EntitySet="Sch_Attendance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Attendance_Student" Association="Self.FK_Attendance_Student">
+            <End Role="Sch_Students" EntitySet="Sch_Students" />
+            <End Role="Sch_Attendance" EntitySet="Sch_Attendance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Classes_Course" Association="Self.FK_Classes_Course">
+            <End Role="Sch_Courses" EntitySet="Sch_Courses" />
+            <End Role="Sch_Classes" EntitySet="Sch_Classes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Classes_Student" Association="Self.FK_Classes_Student">
+            <End Role="Sch_Students" EntitySet="Sch_Students" />
+            <End Role="Sch_Classes" EntitySet="Sch_Classes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Courses_Department" Association="Self.FK_Courses_Department">
+            <End Role="Sch_Departments" EntitySet="Sch_Departments" />
+            <End Role="Sch_Courses" EntitySet="Sch_Courses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Textbooks_Course" Association="Self.FK_Textbooks_Course">
+            <End Role="Sch_Courses" EntitySet="Sch_Courses" />
+            <End Role="Sch_Textbooks" EntitySet="Sch_Textbooks" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PAID_PROJECT_02_DBModelStoreContainer" CdmEntityContainer="PAID_PROJECT_02_DBEntities">
+          <EntitySetMapping Name="Sch_Attendance">
+            <EntityTypeMapping TypeName="PAID_PROJECT_02_DBModel.Sch_Attendance">
+              <MappingFragment StoreEntitySet="Sch_Attendance">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="ClassId" ColumnName="ClassId" />
+                <ScalarProperty Name="AttendanceDate" ColumnName="AttendanceDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sch_Classes">
+            <EntityTypeMapping TypeName="PAID_PROJECT_02_DBModel.Sch_Classes">
+              <MappingFragment StoreEntitySet="Sch_Classes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="EnrollmentDate" ColumnName="EnrollmentDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sch_Courses">
+            <EntityTypeMapping TypeName="PAID_PROJECT_02_DBModel.Sch_Courses">
+              <MappingFragment StoreEntitySet="Sch_Courses">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Credits" ColumnName="Credits" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sch_Departments">
+            <EntityTypeMapping TypeName="PAID_PROJECT_02_DBModel.Sch_Departments">
+              <MappingFragment StoreEntitySet="Sch_Departments">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="RecordTimeStamp" ColumnName="RecordTimeStamp" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sch_Inventory">
+            <EntityTypeMapping TypeName="PAID_PROJECT_02_DBModel.Sch_Inventory">
+              <MappingFragment StoreEntitySet="Sch_Inventory">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ResourceId" ColumnName="ResourceId" />
+                <ScalarProperty Name="ResourceName" ColumnName="ResourceName" />
+                <ScalarProperty Name="InStock" ColumnName="InStock" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Rack" ColumnName="Rack" />
+                <ScalarProperty Name="Shelf" ColumnName="Shelf" />
+                <ScalarProperty Name="Condition" ColumnName="Condition" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sch_Students">
+            <EntityTypeMapping TypeName="PAID_PROJECT_02_DBModel.Sch_Students">
+              <MappingFragment StoreEntitySet="Sch_Students">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Student_Id" ColumnName="Student_Id" />
+                <ScalarProperty Name="Student_Name" ColumnName="Student_Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Enrollment_Date" ColumnName="Enrollment_Date" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sch_Textbooks">
+            <EntityTypeMapping TypeName="PAID_PROJECT_02_DBModel.Sch_Textbooks">
+              <MappingFragment StoreEntitySet="Sch_Textbooks">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

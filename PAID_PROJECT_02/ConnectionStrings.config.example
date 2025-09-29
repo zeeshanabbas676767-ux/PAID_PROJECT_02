@@ -1,0 +1,11 @@
+﻿<connectionStrings>
+  <!-- 
+    Copy this file to ConnectionStrings.config
+    and update it with your real connection string.
+  -->
+  <add name="PAID_PROJECT_02Context"
+       connectionString="Data Source=(localdb)\MSSQLLocalDB;
+       Initial Catalog=PAID_PROJECT_02Context;Integrated Security=True;
+       MultipleActiveResultSets=True;"
+       providerName="System.Data.SqlClient" />
+</connectionStrings>

@@ -1,0 +1,24 @@
+﻿namespace PAID_PROJECT_02.Migrations
+{
+    using System;
+    using System.Data.Entity;
+    using System.Data.Entity.Migrations;
+    using System.Linq;
+
+    internal sealed class Configuration : DbMigrationsConfiguration<PAID_PROJECT_02.Data.PAID_PROJECT_02Context>
+    {
+        public Configuration()
+        {
+            AutomaticMigrationsEnabled = false;
+            ContextKey = "PAID_PROJECT_02.Data.PAID_PROJECT_02Context";
+        }
+
+        protected override void Seed(PAID_PROJECT_02.Data.PAID_PROJECT_02Context context)
+        {
+            //  This method will be called after migrating to the latest version.
+
+            //  You can use the DbSet<T>.AddOrUpdate() helper extension method
+            //  to avoid creating duplicate seed data.
+        }
+    }
+}

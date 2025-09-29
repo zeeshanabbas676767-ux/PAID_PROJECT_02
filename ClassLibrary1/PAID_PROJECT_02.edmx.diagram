@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4e5f2285842347c5be434ec8fcd7338d" Name="Diagram1">
+        <EntityTypeShape EntityType="PAID_PROJECT_02_DBModel.Sch_Attendance" Width="1.5" PointX="7.5" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PAID_PROJECT_02_DBModel.Sch_Classes" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PAID_PROJECT_02_DBModel.Sch_Courses" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="PAID_PROJECT_02_DBModel.Sch_Departments" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PAID_PROJECT_02_DBModel.Sch_Inventory" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PAID_PROJECT_02_DBModel.Sch_Students" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PAID_PROJECT_02_DBModel.Sch_Textbooks" Width="1.5" PointX="5.25" PointY="9.875" IsExpanded="true" />
+        <AssociationConnector Association="PAID_PROJECT_02_DBModel.FK_Attendance_Class" ManuallyRouted="false" />
+        <AssociationConnector Association="PAID_PROJECT_02_DBModel.FK_Attendance_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="PAID_PROJECT_02_DBModel.FK_Classes_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="PAID_PROJECT_02_DBModel.FK_Classes_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="PAID_PROJECT_02_DBModel.FK_Courses_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="PAID_PROJECT_02_DBModel.FK_Textbooks_Course" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

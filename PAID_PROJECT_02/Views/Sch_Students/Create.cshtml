@@ -1,0 +1,128 @@
+﻿@model PAID_PROJECT_02.Models.Sch_Students
+@{
+    ViewBag.Title = "Sch_Students";
+}
+<style>
+    /* Style dropdown box */
+    select {
+        background-color: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #ffffff;
+        padding: 8px 12px;
+        border-radius: 8px;
+        width: 100%;
+    }
+
+        /* Style dropdown options */
+        select option {
+            background-color: #1e293b; /* dark slate */
+            color: #ffffff;
+        }
+
+            /* Highlight on hover */
+            select option:hover {
+                background-color: #4f46e5; /* indigo */
+                color: #ffffff;
+            }
+</style>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="card-glass p-5 rounded-xl shadow-xl max-w-5xl mx-auto">
+        @Html.ValidationSummary(true, "", new { @class = "text-red-400 mb-4" })
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div>
+                @Html.LabelFor(m => m.Student_Id, new { @class = "block text-sm font-semibold text-indigo-300 mb-1" })
+                @Html.EditorFor(m => m.Student_Id, new { htmlAttributes = new { @class = "w-full p-2 rounded-lg bg-white/10 border border-white/20 text-white focus:ring-2 focus:ring-indigo-400" } })
+                @Html.ValidationMessageFor(m => m.Student_Id, "", new { @class = "text-red-400 text-sm" })
+            </div>
+
+            <div>
+                @Html.LabelFor(m => m.Student_Name, new { @class = "block text-sm font-semibold text-indigo-300 mb-1" })
+                @Html.EditorFor(m => m.Student_Name, new { htmlAttributes = new { @class = "w-full p-2 rounded-lg bg-white/10 border border-white/20 text-white focus:ring-2 focus:ring-indigo-400" } })
+                @Html.ValidationMessageFor(m => m.Student_Name, "", new { @class = "text-red-400 text-sm" })
+            </div>
+            <div>
+                @Html.LabelFor(m => m.Address, new { @class = "block text-sm font-semibold text-indigo-300 mb-1" })
+                @Html.EditorFor(m => m.Address, new { htmlAttributes = new { @class = "w-full p-2 rounded-lg bg-white/10 border border-white/20 text-white focus:ring-2 focus:ring-indigo-400" } })
+                @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-red-400 text-sm" })
+            </div>
+            <div>
+                @Html.LabelFor(m => m.City, new { @class = "block text-sm font-semibold text-indigo-300 mb-1" })
+                @Html.EditorFor(m => m.City, new { htmlAttributes = new { @class = "w-full p-2 rounded-lg bg-white/10 border border-white/20 text-white focus:ring-2 focus:ring-indigo-400" } })
+                @Html.ValidationMessageFor(m => m.City, "", new { @class = "text-red-400 text-sm" })
+            </div>
+            <div>
+                @Html.LabelFor(m => m.Country, new { @class = "block text-sm font-semibold text-indigo-300 mb-1" })
+                @Html.EditorFor(m => m.Country, new { htmlAttributes = new { @class = "w-full p-2 rounded-lg bg-white/10 border border-white/20 text-white focus:ring-2 focus:ring-indigo-400" } })
+                @Html.ValidationMessageFor(m => m.Country, "", new { @class = "text-red-400 text-sm" })
+            </div>
+            <div>
+                @Html.LabelFor(m => m.Email, new { @class = "block text-sm font-semibold text-indigo-300 mb-1" })
+                @Html.EditorFor(m => m.Email, new { htmlAttributes = new { @class = "w-full p-2 rounded-lg bg-white/10 border border-white/20 text-white focus:ring-2 focus:ring-indigo-400" } })
+                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-red-400 text-sm" })
+            </div>
+            <div>
+                @Html.LabelFor(m => m.Phone, new { @class = "block text-sm font-semibold text-indigo-300 mb-1" })
+                @Html.EditorFor(m => m.Phone, new { htmlAttributes = new { @class = "w-full p-2 rounded-lg bg-white/10 border border-white/20 text-white focus:ring-2 focus:ring-indigo-400" } })
+                @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-red-400 text-sm" })
+            </div>
+            <div>
+                @Html.LabelFor(m => m.Mobile, new { @class = "block text-sm font-semibold text-indigo-300 mb-1" })
+                @Html.EditorFor(m => m.Mobile, new { htmlAttributes = new { @class = "w-full p-2 rounded-lg bg-white/10 border border-white/20 text-white focus:ring-2 focus:ring-indigo-400" } })
+                @Html.ValidationMessageFor(m => m.Mobile, "", new { @class = "text-red-400 text-sm" })
+            </div>
+            <div>
+                @Html.LabelFor(m => m.Enrollment_Date, new { @class = "block text-sm font-semibold text-indigo-300 mb-1" })
+                @Html.EditorFor(m => m.Enrollment_Date, new { htmlAttributes = new { @class = "w-full p-2 rounded-lg bg-white/10 border border-white/20 text-white focus:ring-2 focus:ring-indigo-400" } })
+                @Html.ValidationMessageFor(m => m.Enrollment_Date, "", new { @class = "text-red-400 text-sm" })
+            </div>
+            <div class="flex items-center gap-2">
+                @Html.EditorFor(m => m.Active, new { htmlAttributes = new { @class = "h-4 w-4 text-indigo-400 focus:ring-indigo-400 border-gray-600 rounded" } })
+                @Html.LabelFor(m => m.Active, new { @class = "text-sm font-semibold text-indigo-300" })
+            </div>
+            <div class="flex items-center gap-2">
+                @Html.EditorFor(m => m.Deleted, new { htmlAttributes = new { @class = "h-4 w-4 text-indigo-400 focus:ring-indigo-400 border-gray-600 rounded" } })
+                @Html.LabelFor(m => m.Deleted, new { @class = "text-sm font-semibold text-indigo-300" })
+            </div>
+            <div>
+                @Html.LabelFor(m => m.CreatedBy, new { @class = "block text-sm font-semibold text-indigo-300 mb-1" })
+                @Html.EditorFor(m => m.CreatedBy, new { htmlAttributes = new { @class = "w-full p-2 rounded-lg bg-white/10 border border-white/20 text-white focus:ring-2 focus:ring-indigo-400" } })
+                @Html.ValidationMessageFor(m => m.CreatedBy, "", new { @class = "text-red-400 text-sm" })
+            </div>
+            <div>
+                @Html.LabelFor(m => m.CreatedDate, new { @class = "block text-sm font-semibold text-indigo-300 mb-1" })
+                @Html.EditorFor(m => m.CreatedDate, new { htmlAttributes = new { @class = "w-full p-2 rounded-lg bg-white/10 border border-white/20 text-white focus:ring-2 focus:ring-indigo-400" } })
+                @Html.ValidationMessageFor(m => m.CreatedDate, "", new { @class = "text-red-400 text-sm" })
+            </div>
+            <div>
+                @Html.LabelFor(m => m.UpdatedBy, new { @class = "block text-sm font-semibold text-indigo-300 mb-1" })
+                @Html.EditorFor(m => m.UpdatedBy, new { htmlAttributes = new { @class = "w-full p-2 rounded-lg bg-white/10 border border-white/20 text-white focus:ring-2 focus:ring-indigo-400" } })
+                @Html.ValidationMessageFor(m => m.UpdatedBy, "", new { @class = "text-red-400 text-sm" })
+            </div>
+            <div>
+                @Html.LabelFor(m => m.UpdatedDate, new { @class = "block text-sm font-semibold text-indigo-300 mb-1" })
+                @Html.EditorFor(m => m.UpdatedDate, new { htmlAttributes = new { @class = "w-full p-2 rounded-lg bg-white/10 border border-white/20 text-white focus:ring-2 focus:ring-indigo-400" } })
+                @Html.ValidationMessageFor(m => m.UpdatedDate, "", new { @class = "text-red-400 text-sm" })
+            </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="mt-6 flex gap-3">
+            <input type="submit" value="Create" class="px-4 py-2 rounded-lg bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-semibold shadow" style="cursor:pointer" />
+
+            @if (Model.Id > 0)
+            {
+                @Html.ActionLink("Cancel", "Index", null, new { @class = "px-4 py-2 rounded-lg bg-gray-500 text-white font-semibold ", style = "cursor:pointer" })
+            }
+            else
+            {
+                <input type="reset" value="Clear" class="px-4 py-2 rounded-lg bg-gray-500 text-white font-semibold " style="cursor:pointer" />
+            }
+
+            @Html.ActionLink("Back", "Index", null, new { @class = "px-4 py-2 rounded-lg bg-black/50 border border-white/20 text-white font-semibold" })
+        </div>
+    </div>
+
+}
